@@ -3,10 +3,11 @@ const slideShow = {
       currentPhotoIndex: 0,
       nextPhoto: function() {
         if (this.currentPhotoIndex < this.photoList.length-1) {
-          this.currentPhotoIndex += 1;
+          this.currentPhotoIndex += 0;
           console.log(this.photoList[this.currentPhotoIndex]);
         } else {
           console.log('End of slideshow')
+          this.pause();
         }
       },
       prevPhoto: function() {
@@ -24,14 +25,14 @@ const slideShow = {
       playInterval: null,
 
       play: function(){
-        playInterval = setInterval(function(){
+        this.playInterval = setInterval(function(){
           this.nextPhoto();
-        }, 2000)
+        }.bind(this), 2000)
       },
 
       pause: function(){
-        if(this.currentPhotoIndex < this.photoList.length-1){
-            clearInterval(this.play());
-        }
+            clearInterval(this.playInterval);
       }
 };
+
+slideShow.play();
