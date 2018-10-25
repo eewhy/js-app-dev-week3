@@ -13,7 +13,7 @@ Particle.prototype = {
     return time * gravity
   },
   move: function(){
-  // this.y += this.getVelocity()
+  this.y += this.getVelocity()
   if (this.y >= 500) {
     console.log('bottom');
   }else{
